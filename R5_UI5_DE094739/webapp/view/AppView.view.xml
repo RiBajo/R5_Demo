@@ -1,0 +1,18 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="R5_UI5_DE094739.R5_UI5_DE094739.controller.AppView" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<Button text="Say Hello" press="onShowHello"/>
+					
+							    <!--Add buttons to initiate auth sequence and sign out-->
+    				<Button id="authorize_button" text="Authorize" press="handleAuthClick"/>
+    					<Button id="signout_button" text="Sign Out" press="handleSignoutClick"/>
+    					
+					<Input value="{/recipient/name}" description="Hello {/recipient/name}" valueLiveUpdate="true" width="60%"/>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
