@@ -4,11 +4,10 @@
 		<pages>
 			<Page title="{i18n>title}">
 				<content>
-					<Button text="Say Hello" press="onShowHello"/>
+<!--					<Button text="Say Hello" press="onShowHello"/>
 					
-							    <!--Add buttons to initiate auth sequence and sign out-->
     				<Button id="authorize_button" text="Authorize" press="handleAuthClick"/>
-    				<Button id="signout_button" text="Sign Out" press="handleSignoutClick"/>
+    				<Button id="signout_button" text="Sign Out" press="handleSignoutClick"/>-->
     				<Button id="questionButton" text="Ask Question" press="onAskQuestion"/>
     					
 					<Input id="question" value="{/question}" description="{/answer}" valueLiveUpdate="false" width="800px"/>
