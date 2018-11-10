@@ -8,9 +8,10 @@
 					
 							    <!--Add buttons to initiate auth sequence and sign out-->
     				<Button id="authorize_button" text="Authorize" press="handleAuthClick"/>
-    					<Button id="signout_button" text="Sign Out" press="handleSignoutClick"/>
+    				<Button id="signout_button" text="Sign Out" press="handleSignoutClick"/>
+    				<Button id="questionButton" text="Ask Question" press="onAskQuestion"/>
     					
-					<Input value="{/recipient/name}" description="Hello {/recipient/name}" valueLiveUpdate="true" width="60%"/>
+					<Input id="question" value="{/question}" description="{/answer}" valueLiveUpdate="false" width="800px"/>
 				</content>
 			</Page>
 		</pages>

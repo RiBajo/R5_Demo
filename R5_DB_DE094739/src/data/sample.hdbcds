@@ -1,0 +1,9 @@
+context sample {
+
+    /*@@layout{"layoutInfo":{"x":-238,"y":-141.5}}*/
+    entity QnA {
+        key ID       : String(10);
+            QUESTION : String(200);
+            Answer   : String(200);
+    };
+};   

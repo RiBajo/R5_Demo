@@ -21,21 +21,6 @@ sap.ui.define([
 			};
 			var oModel = new JSONModel(oData);
 			this.getView().setModel(oModel);
-
-			$.ajax({
-				type: "GET",
-				url: "/node/sample",
-				async: true,
-				dataType: 'json',
-				success: function (data, textStatus, request) {
-					MessageToast.show(JSON.stringify(data));
-					return;
-				},
-				error: function (jqXHR, textStatus, errorThrown) {
-					MessageToast.show(JSON.stringify(errorThrown));
-					return;
-				}
-			});
 //BSP:
 /*			$.ajax({
 				type: "POST",
@@ -88,6 +73,25 @@ sap.ui.define([
 		//	onExit: function() {
 		//
 		//	}
+		
+		onAskQuestion: function(oEvent){
+			var sQuestion = this.getView().byId("question").getValue();
+			
+			$.ajax({
+				type: "GET",
+				url: "/node/question/" + sQuestion,
+				async: true,
+				dataType: 'json',
+				success: function (data, textStatus, request) {
+					this.getView().getModel().setProperty("/answer", data.result[0].Answer);
+					return;
+				}.bind(this),
+				error: function (jqXHR, textStatus, errorThrown) {
+					MessageToast.show(JSON.stringify(errorThrown));
+					return;
+				}
+			});
+		}
 
 	});
 

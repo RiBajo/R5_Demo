@@ -42,29 +42,34 @@ module.exports = function () {
 	});
 
 	//Simple Database Select - In-line Callbacks
-	app.get("/example1", (req, res) => {
+	app.get("/question/:question", (req, res) => {
 		var client = req.db;
-
-		client.prepare("select SESSION_USER from \"DUMMY\"", (err, statement) => {
-
-			if (err) {
-				res.type("text/plain").status(500).send(`ERROR: ${err.toString()}`);
-				return;
-			}
-
-			statement.exec([], (err, results) => {
+		var question = req.params.question + "?";
+		
+		try {
+			client.prepare("select * from \"sample.QnA\" WHERE QUESTION = ? ", (err, statement) => {
+	
 				if (err) {
 					res.type("text/plain").status(500).send(`ERROR: ${err.toString()}`);
 					return;
-				} else {
-					var
-						result = JSON.stringify({
-							Objects: results
-						});
-					res.type("application/json").status(200).send(result);
 				}
-			});
-		});
+	
+				statement.exec([question], (err, results) => {
+					if (err) {
+						res.type("text/plain").status(500).send(`ERROR: ${err.toString()}`);
+						return;
+					} else {
+						var
+							result = JSON.stringify({
+								result: results
+							});
+						res.type("application/json").status(200).send(result);
+					}
+				});
+			});	
+		} catch (e) {
+			return res.type("text/plain").status(500).send(`ERROR: ${e.toString()}`);
+		}
 	});
 
 	//Simple Database Select - In-line Callbacks
