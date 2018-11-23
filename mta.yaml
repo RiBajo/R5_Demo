@@ -40,4 +40,4 @@ resources:
   - name: hdi_r5db
     properties:
       hdi-container-name: '${service-name}'
-    type: org.cloudfoundry.existing-service
+    type: com.sap.xs.hdi-container
