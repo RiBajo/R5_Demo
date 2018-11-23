@@ -34,10 +34,11 @@ modules:
     path: r5db
     requires:
       - name: hdi_r5db
+
 resources:
   - name: r5_uaa
     type: org.cloudfoundry.existing-service
   - name: hdi_r5db
     properties:
-      hdi-container-name: '${service-name}'
-    type: org.cloudfoundry.existing-service
+      hdi-container-name: ${service-name}
+    type: com.sap.xs.hdi-container
