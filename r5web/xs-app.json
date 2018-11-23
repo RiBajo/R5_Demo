@@ -1,17 +1,21 @@
 {
-	"welcomeFile": "/R5_UI5_DE094739/index.html",
+	"welcomeFile": "index.html",
 	"authenticationMethod": "route",
 	"logout": {
 		"logoutEndpoint": "/do/logout"
 	},
 	"routes": [{
-		"source": "^/R5_UI5_DE094739/(.*)$",
+		"source": "^/r5web/(.*)$",
 		"target": "$1",
-		"localDir": "webapp"
+		"localDir": "resources"
 	}, {
 		"source": "^/node/(.*)$",
-		"destination": "core-backend",
+		"destination": "r5-backend",
 		"csrfProtection": true,
 		"authenticationType": "xsuaa"
+	}, {
+		"source": "/(.*)",
+		"authenticationType": "xsuaa",
+		"localDir": "resources"
 	}]
 }

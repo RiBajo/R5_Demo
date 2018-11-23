@@ -5,7 +5,7 @@ sap.ui.define([
 ], function (Controller, MessageToast, JSONModel) {
 	"use strict";
 
-	return Controller.extend("R5_UI5_DE094739.R5_UI5_DE094739.controller.AppView", {
+	return Controller.extend("r5demo.r5web.controller.AppView", {
 
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.

@@ -1,7 +1,7 @@
 {
 	"_version": "1.8.0",
 	"sap.app": {
-		"id": "R5_UI5_DE094739.R5_UI5_DE094739",
+		"id": "r5demo.r5web",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"applicationVersion": {
@@ -36,7 +36,7 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "R5_UI5_DE094739.R5_UI5_DE094739.view.AppView",
+			"viewName": "r5demo.r5web.view.AppView",
 			"type": "XML"
 		},
 		"dependencies": {
@@ -59,7 +59,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "R5_UI5_DE094739.R5_UI5_DE094739.i18n.i18n"
+					"bundleName": "r5demo.r5web.i18n.i18n"
 				}
 			}
 		},
@@ -75,7 +75,7 @@
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"async": true,
-				"viewPath": "R5_UI5_DE094739.R5_UI5_DE094739.view",
+				"viewPath": "r5demo.r5web.view",
 				"controlAggregation": "pages",
 				"controlId": "idAppControl",
 				"clearControlAggregation": false
@@ -97,7 +97,7 @@
 					"viewName": "View1",
 					"routerClass": "sap.m.routing.Router",
 					"async": true,
-					"viewPath": "R5_UI5_DE094739.R5_UI5_DE094739.view",
+					"viewPath": "r5demo.r5web.view",
 					"controlAggregation": "pages",
 					"controlId": "idAppControl"
 				},

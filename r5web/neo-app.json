@@ -1,5 +1,5 @@
 {
-  "welcomeFile": "/webapp/index.html",
+  "welcomeFile": "/resources/index.html",
   "routes": [
     {
       "path": "/resources",
@@ -18,14 +18,6 @@
         "entryPath": "/test-resources"
       },
       "description": "SAPUI5 Test Resources"
-    },
-    {
-      "path": "/node",
-      "target": {
-        "type": "destination",
-        "name": "DE094739_R5-R5_NodeJs_App_de094739_api"
-      },
-      "description": "Node.js"
     }
   ],
   "sendWelcomeFileRedirect": true

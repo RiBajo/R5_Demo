@@ -1,43 +1,43 @@
-ID: DE094739_R5
-_schema-version: '3.1'
+ID: R5
+_schema-version: '2.0'
 version: 0.0.1
 modules:
-  - name: R5_UI5_DE094739
+  - name: r5web
     type: html5
-    path: R5_UI5_DE094739
+    path: r5web
     parameters:
       disk-quota: 256M
       memory: 256M
     build-parameters:
       builder: grunt
     requires:
-      - name: sales-uaa
-      - name: core-node-api
+      - name: r5_uaa
+      - name: r5node-node-api
         group: destinations
         properties:
-          name: core-backend
+          name: r5-backend
           url: '~{url}'
           forwardAuthToken: true
-  - name: R5_NodeJs_App_DE094739
+  - name: r5node
     type: nodejs
-    path: R5_NodeJs_App_DE094739
+    path: r5node
     provides:
-      - name: core-node-api
+      - name: r5node-node-api
         properties:
           url: '${default-url}'
     requires:
-      - name: hdi_R5_DB_DE094739
-      - name: R5_DB_DE094739
-      - name: sales-uaa
-  - name: R5_DB_DE094739
+      - name: hdi_r5db
+      - name: r5db
+      - name: r5_uaa
+  - name: r5db
     type: hdb
-    path: R5_DB_DE094739
+    path: r5db
     requires:
-      - name: hdi_R5_DB_DE094739
+      - name: hdi_r5db
 resources:
-  - name: sales-uaa
-    type: org.cloudfoundry.managed-service
-  - name: hdi_R5_DB_DE094739
+  - name: r5_uaa
+    type: org.cloudfoundry.existing-service
+  - name: hdi_r5db
     properties:
       hdi-container-name: '${service-name}'
-    type: com.sap.xs.hdi-container
+    type: org.cloudfoundry.existing-service

@@ -5,7 +5,7 @@
 		"@sap/hdbext": "4.4.2",
 		"@sap/hana-client": "~2.3",
 		"@sap/textbundle": "latest",
-		"@sap/logging": "~4.0",
+		"@sap/logging": "latest",
 		"@sap/audit-logging": "2.2.4",
 		"@sap/jobs-client": "~1.3",
 		"@sap/cds": "1.14.1",
@@ -32,7 +32,7 @@
 	},
 	"files": [],
 	"main": "server.js",
-	"name": "nodejs_de089750",
+	"name": "r5node",
 	"scripts": {
 		"start": "node server.js",
 		"test": "node ./node_modules/gulp/bin/gulp test",
