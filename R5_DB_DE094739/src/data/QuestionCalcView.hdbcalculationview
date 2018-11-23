@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="QuestionCalcView" applyPrivilegeType="NONE" dataCategory="DIMENSION" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="QuestionCalcView"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="sample.QnA">
+    <resourceUri>sample.QnA</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="sample.QnA">
+  <attributes>
+    <attribute id="ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping columnObjectName="sample.QnA" columnName="ID"/>
+    </attribute>
+    <attribute id="Answer" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Answer"/>
+      <keyMapping columnObjectName="sample.QnA" columnName="Answer"/>
+    </attribute>
+    <attribute id="QUESTION" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUESTION"/>
+      <keyMapping columnObjectName="sample.QnA" columnName="QUESTION"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/></logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

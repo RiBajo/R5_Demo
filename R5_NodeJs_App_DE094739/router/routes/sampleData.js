@@ -5,7 +5,6 @@
 var express = require("express");
 var async = require("async");
 
-const stock = require("/home/vcap/app/apis/stock_quote_api.js");
 module.exports = function () {
 	var app = express.Router();
 	//Hello Router
@@ -18,26 +17,6 @@ module.exports = function () {
 		var result = JSON.stringify({
 			userContext: userContext
 		});
-		res.type("application/json").status(200).send(result);
-	});
-
-	app.get("/google", (req, res) => {
-		var userContext = req.authInfo;
-		let quote = stock.getQuote(); // val is "Hello"
-
-		if (quote != null) {
-			var result = JSON.stringify({
-				userContext: userContext,
-				status: "Erfolg",
-				quote: quote  
-			});
-
-		} else {
-			var result = JSON.stringify({
-				userContext: userContext,
-				status: "Kein Erfolg"
-			});
-		}
 		res.type("application/json").status(200).send(result);
 	});
 

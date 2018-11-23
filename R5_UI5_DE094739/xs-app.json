@@ -10,9 +10,8 @@
 		"localDir": "webapp"
 	}, {
 		"source": "^/node/(.*)$",
-		"target": "$1",
-		"destination": "https://olvrp1kcpjj1ynwxdejs-app-de094739.cfapps.eu10.hana.ondemand.com/",
-		"authenticationType": "xsuaa",
-		"csrfProtection": false
+		"destination": "core-backend",
+		"csrfProtection": true,
+		"authenticationType": "xsuaa"
 	}]
 }

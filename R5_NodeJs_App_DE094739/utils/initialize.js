@@ -16,22 +16,22 @@ module.exports = {
 
 		//Initialize Express App for XS UAA and HDBEXT Middleware
 		var app = express();
-/*		passport.use("JWT", new xssec.JWTStrategy(xsenv.getServices({
-		uaa: {
-		tag: "xsuaa"
-		}
-		}).uaa));*/
+		passport.use("JWT", new xssec.JWTStrategy(xsenv.getServices({
+			uaa: {
+				tag: "xsuaa"
+			}
+		}).uaa));
 
 		app.use(passport.initialize());
 
 		var hanaOptions = xsenv.getServices({
-		hana: {
-		tag: "hana"
-		}
+			hana: {
+				tag: "hana"
+			}
 		});
 
 		app.use(
-		xsHDBConn.middleware(hanaOptions.hana)
+			xsHDBConn.middleware(hanaOptions.hana)
 		);
 
 		app.use(bodyParser.json()); // for parsing application/json

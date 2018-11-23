@@ -21,9 +21,7 @@
 		"winston": "~2.3", 
 		"body-parser": "~1.17",
 		"elementtree": "latest",
-		"multer": "latest",
-		"googleapis": "latest",
-		"stock-quote": "latest"
+		"multer": "latest"
 	},
 	"devDependencies": {
 		"gulp": "3.9.1",
