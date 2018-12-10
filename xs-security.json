@@ -4,16 +4,16 @@
 	"description": "Security profile of R5 application",
 	"scopes": [
 		{
-			"name": "r5.user",
+			"name": "$XSAPPNAME.USER",
 			"description": "R5 User"
 		}
 	],
 	"role-templates": [
 		{
-			"name": "R5_StandardRole",
-			"description": "R5 Standard Role",
+			"name": "R5_User",
+			"description": "R5 Standard User",
 			"scope-references": [
-				"r5.user"
+				"$XSAPPNAME.USER"
 			]
 		}
 	]

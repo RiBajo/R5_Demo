@@ -24,31 +24,54 @@ module.exports = function () {
 	app.get("/question/:question", (req, res) => {
 		var client = req.db;
 		var question = req.params.question + "?";
-		
-		try {
-			client.prepare("select * from \"sample.QnA\" WHERE QUESTION = ? ", (err, statement) => {
-	
+		var answer;
+
+		client.prepare("DELETE FROM \"sample.Answer\" ", (err, statement) => {
+
+			if (err) {
+				res.type("text/plain").status(500).send(`ERROR: ${err.toString()}`);
+				return;
+			}
+			statement.exec([], (err, results) => {
 				if (err) {
 					res.type("text/plain").status(500).send(`ERROR: ${err.toString()}`);
 					return;
+				} else {
+					client.prepare("select * from \"sample.QnA\" WHERE QUESTION = ? ", (err, statement) => {
+						if (err) {
+							res.type("text/plain").status(500).send(`ERROR: ${err.toString()}`);
+							return;
+						}
+						statement.exec([question], (err, results) => {
+							if (err) {
+								res.type("text/plain").status(500).send(`ERROR: ${err.toString()}`);
+								return;
+							} else {
+								answer = results[0].Answer;
+								client.prepare("INSERT INTO \"sample.Answer\" VALUES (?,?) ", (err, statement) => {
+									if (err) {
+										res.type("text/plain").status(500).send(`ERROR: ${err.toString()}`);
+										return;
+									}
+									statement.exec(['123', answer], (err, results) => {
+										if (err) {
+											res.type("text/plain").status(500).send(`ERROR: ${err.toString()}`);
+											return;
+										} else {
+											var
+												result = JSON.stringify({
+													result: 'Successfull'
+												});
+											res.type("application/json").status(200).send(result);
+										}
+									});
+								});
+							}
+						});
+					});
 				}
-	
-				statement.exec([question], (err, results) => {
-					if (err) {
-						res.type("text/plain").status(500).send(`ERROR: ${err.toString()}`);
-						return;
-					} else {
-						var
-							result = JSON.stringify({
-								result: results
-							});
-						res.type("application/json").status(200).send(result);
-					}
-				});
-			});	
-		} catch (e) {
-			return res.type("text/plain").status(500).send(`ERROR: ${e.toString()}`);
-		}
+			});
+		});
 	});
 
 	//Simple Database Select - In-line Callbacks
