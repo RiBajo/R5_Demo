@@ -5,12 +5,13 @@
 var express = require("express");
 var async = require("async");
 
+//const superagent = require('superagent');
 const stock = require("/home/vcap/app/apis/stock_quote_api.js");
 module.exports = function () {
 	var app = express.Router();
 	//Hello Router
 	app.get("/", (req, res) => {
-		res.send("Hello World Node.js");
+		res.send("Hello world Node.js");
 	});
 
 	app.get("/whoAmI", (req, res) => {
@@ -27,10 +28,10 @@ module.exports = function () {
 
 		if (quote != null) {
 			var result = JSON.stringify({
-				userContext: userContext,
+			    userContext: userContext,
 				status: "Erfolg",
-				quote: quote  
-			});
+				quote: quote 
+				});
 
 		} else {
 			var result = JSON.stringify({
@@ -71,7 +72,53 @@ module.exports = function () {
 			return res.type("text/plain").status(500).send(`ERROR: ${e.toString()}`);
 		}
 	});
+	
+	//Test Maissa: Chuck Norris joke
+	app.get("/chuck", (req, res) => {
+		var userContext = req.authInfo;
+		let quote = stock.getQuote(); // val is "Hello"
 
+		if (quote != null) {
+			var result = JSON.stringify({
+				userContext: userContext,
+				status: "Someone once videotaped Chuck Norris getting pissed off. It was called Walker: Texas Chain Saw Masacre.",
+				quote: quote  
+			});
+
+		} else {
+			var result = JSON.stringify({
+				userContext: userContext,
+				status: "Kein Erfolg"
+			});
+		}
+		res.type("application/json").status(200).send(result);
+	});
+	
+	
+	//Implement External Data in SCP
+/*	app.get("/chuckvar", (req, res) => {
+	
+		var http = require('https'),
+    		url = require('https://api.chucknorris.io/jokes/categories');
+			http.createServer(function (req, res) {
+    	var query = url.parse(req.url,true).query;
+    		res.end(JSON.stringify(query));
+		})
+		res.type("application/json").status(200).send(result);
+	});*/
+	
+	//Chuck with Variable
+	const request = require('request');
+	app.get("/chuckvar", (req, res) => {
+    	request('https://api.chucknorris.io/jokes/random', function (error, response, body) {
+        	console.log('error:', error);
+        	console.log('statusCode:', response && response.statusCode); 
+        	console.log('body:', body);
+        	res.end(body);
+		 });
+	});
+//<button type="submit"  onClick="refreshPage()">Refresh Button</button>
+	
 	//Simple Database Select - In-line Callbacks
 	app.get("/example2", (req, res) => {
 		var client = req.db;
